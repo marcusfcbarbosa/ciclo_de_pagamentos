@@ -1,9 +1,15 @@
 const billingCycle = require('./billingCycle')
+const errorHandler = require('../common/errorHandler')
 
 //quais verbos http que eu quero trabalhar
 billingCycle.methods(['get','post','put','delete'])
 //validações do dominio ODM
 billingCycle.updateOptions({ new:true, runValidators:true})
+
+//aplicando o middleware de tratamento de erros, usando o lodash, depois do PUT e POST
+billingCycle.after('post',errorHandler).after('put',errorHandler)
+
+
 
 //obtendo o contador de pagamentos
 billingCycle.route('count',(req,res,next)=>{
