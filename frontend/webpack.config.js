@@ -28,6 +28,7 @@ module.exports ={
         new ExtractTextPlugin('app.css')
     ],
     module:{
+        
         loaders:[{
             test: /.js[x]?$/,//pegando qualquer arquivo .js e .jsx
             loader:'babel-loader',
