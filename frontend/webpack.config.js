@@ -40,9 +40,9 @@ module.exports ={
             test: /\.css?$/,//poder carregar arquivos com extensão .css
             loader:ExtractTextPlugin.extract("style-loader","css-loader")
         },{
-            test: /\.woff|.woff2|.ttf|.eot|.svg|.png|.jpg*.*$/,
+            test: /\.woff|.woff2|.ttf|.eot|.svg|.png|.jpg*.*$/,//arquivos de fonte e imagem
             loader: 'file'
         }
-    ]
+     ]
     }
 }
