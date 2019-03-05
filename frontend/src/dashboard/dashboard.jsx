@@ -14,6 +14,7 @@ class DashBoard extends Component{
                     <ContentHeader tittle='Dashboard'  subtittle='Versão 1.0'/>
                     <Content>
                         <Row>
+                            
                             <ValueBox 
                             cols='12 4'
                             color='green'
@@ -37,7 +38,6 @@ class DashBoard extends Component{
                             />
 
                         </Row>
-                        
                     </Content>
                 </div>
         )
