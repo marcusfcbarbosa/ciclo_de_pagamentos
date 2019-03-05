@@ -1,29 +1,22 @@
-const billingCycle = require('./billingCycle')
+const BillingCycle = require('./billingCycle')
 const errorHandler = require('../common/errorHandler')
 
-//quais verbos http que eu quero trabalhar
-billingCycle.methods(['get','post','put','delete'])
-//validações do dominio ODM
-billingCycle.updateOptions({ new:true, runValidators:true})
+BillingCycle.methods(['get', 'post', 'put', 'delete'])
+BillingCycle.updateOptions({new: true, runValidators: true})
+BillingCycle.after('post', errorHandler).after('put', errorHandler)
 
-//aplicando o middleware de tratamento de erros, usando o lodash, depois do PUT e POST
-billingCycle.after('post',errorHandler).after('put',errorHandler)
-
-
-
-//obtendo o contador de pagamentos
-billingCycle.route('count',(req,res,next)=>{
-    billingCycle.count((error,value) =>{
-        if(error){
-            res.status(500).json({erros:[error]})
-        }else{
+BillingCycle.route('count', (req, res, next) => {
+    BillingCycle.count((error, value) => {
+        if(error) {
+            res.status(500).json({errors: [error]})
+        } else {
             res.json({value})
         }
     })
 })
 
-billingCycle.route('summary', (req, res, next) => {
-    billingCycle.aggregate({
+BillingCycle.route('summary', (req, res, next) => {
+    BillingCycle.aggregate({
         $project: {credit: {$sum: "$credits.value"}, debt: {$sum: "$debts.value"}}
     }, {
         $group: {_id: null, credit: {$sum: "$credit"}, debt: {$sum: "$debt"}}
@@ -38,6 +31,4 @@ billingCycle.route('summary', (req, res, next) => {
     })
 })
 
-
-
-module.exports = billingCycle
+module.exports = BillingCycle
