@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-
 import  { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'//evolui o estado disparando para o reducer
+import  {getSummary} from    './dashBoardActions'//Action do Dashboard
 
 import ContentHeader from '../common/template/contentHeader'
 import Content from '../common/template/content'
@@ -9,6 +10,10 @@ import ValueBox from '../common/widget/valueBox'
 import Row from '../common/layout/row'
 
 class DashBoard extends Component{
+        componentWillMount(){
+            this.props.getSummary();
+        }
+
     render(){
 
         const { credit, debt} = this.props.summary
@@ -53,5 +58,7 @@ const mapStateToProps = state =>({
     summary: state.dashboard.summary
 })
 
+const mapDispatchToProps = dispatch =>bindActionCreators({getSummary},dispatch) 
+
 //Padrão decorator
-export default connect(mapStateToProps)(DashBoard)
+export default connect(mapStateToProps,mapDispatchToProps)(DashBoard)
