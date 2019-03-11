@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 
-const rootReducer = combineReducers({
-    dashboard: () => ({ sumary: { credit:100, debt:50 }})
+//import DashBoardReducer from '../dashboard/dashBoardReducer'
 
+
+const rootReducer = combineReducers({
+    dashboard: () => ({ summary: { credit:100, debt:50 }})
 })
 
 export default rootReducer
