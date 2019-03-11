@@ -13,11 +13,8 @@ class DashBoard extends Component{
         componentWillMount(){
             this.props.getSummary();
         }
-
     render(){
-
         const { credit, debt} = this.props.summary
-
         return(
                 <div>
                     <ContentHeader tittle='Dashboard'  subtittle='Versão 1.0'/>

@@ -8,8 +8,9 @@ import promise  from 'redux-promise'//para trabalhar com requisição assincrona
 import App from './main/app'
 import reducers from './main/reducers'
 
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__()
 //preparando minha store para trabalhar com requisições assincronas, o applyMiddleware espera a resolução da promise, para poder carregar o .data
-const store = applyMiddleware(promise)(createStore)(reducers)
+const store = applyMiddleware(promise)(createStore)(reducers,devTools )
 
 ReactDOM.render(
    <Provider store={store}>
