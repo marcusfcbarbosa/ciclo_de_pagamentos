@@ -11,4 +11,5 @@ module.exports = function(server){
     //Rotas de ciclo de Pagamento, acessando aos serviços da api
     const BillingCycle = require('../api/billingCycle/billingCycleService')
     BillingCycle.register(router,'/billingCycles')
+    
 }

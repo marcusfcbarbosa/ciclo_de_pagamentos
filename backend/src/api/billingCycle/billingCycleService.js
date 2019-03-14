@@ -16,11 +16,10 @@ BillingCycle.route('count', (req, res, next) => {
 })
 
 BillingCycle.route('summary', (req, res, next) => {
-
       const cursor = BillingCycle.aggregate()
-        .project({ credito: { $sum: "$credits.value" }, debito: { $sum: "$debts.value" } })
-        .group({ _id: null, credito: { $sum: "$credit" }, debito: { $sum: "$debt" } })
-        .project({ _id: 0, credito: 1, debito: 1 })
+        .project({ credit: { $sum: "$credits.value" }, debt: { $sum: "$debts.value" } })
+        .group({ _id: null, credit: { $sum: "$credit" }, debt: { $sum: "$debt" } })
+        .project({ _id: 0, credit: 1, debt: 1 })
         .cursor({ batchSize: 100 })
         .exec()
 
@@ -28,7 +27,7 @@ BillingCycle.route('summary', (req, res, next) => {
           if (error) {
               res.status(500).json({ errors: [error] })
           } else {
-              res.json(result[0] || { credito: 0, debito: 0 })
+              res.json(result[0] || { credit: 0, debt: 0 })
           }
         })
 })
