@@ -15,6 +15,5 @@ export default props =>(
                 </i>
             </div>
         </div>           
-
-    </Grid>   
+    </Grid>
 )

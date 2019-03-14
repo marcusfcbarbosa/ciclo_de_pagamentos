@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import  { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'//evolui o estado disparando para o reducer
-import  {getSummary} from    './dashBoardActions'//Action do Dashboard
+import  { getSummary } from    './dashBoardActions'//Action do Dashboard
 
 import ContentHeader from '../common/template/contentHeader'
 import Content from '../common/template/content'
@@ -13,11 +13,12 @@ class DashBoard extends Component{
         componentWillMount(){
             this.props.getSummary();
         }
+
     render(){
         const { credit, debt} = this.props.summary
         return(
                 <div>
-                    <ContentHeader tittle='Dashboard'  subtittle='Versão 1.0'/>
+                    <ContentHeader tittle='Dashboard'  subtittle='Versão 1.0 usando redux'/>
                     <Content>
                         <Row>
 

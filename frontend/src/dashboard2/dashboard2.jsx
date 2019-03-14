@@ -11,7 +11,7 @@ const BASE_URL = 'http://localhost:3003/api'
 
 //Esse é um exemplo de classe de Redux
 
-export default class DashBoard2 extends Component{
+export default class DashBoard2 extends Component {
     constructor(props){
         super(props)
             this.state = {credit:0 , debt:0 }
@@ -26,10 +26,9 @@ export default class DashBoard2 extends Component{
         const { credit, debt} = this.state
         return(
                 <div>
-                    <ContentHeader tittle='Dashboard'  subtittle='Versão 1.0'/>
+                    <ContentHeader tittle='Dashboard'  subtittle='Versão 2.0 Sem redux'/>
                     <Content>
                         <Row>
-
                             <ValueBox 
                             cols='12 4'
                             color='green'
@@ -51,7 +50,6 @@ export default class DashBoard2 extends Component{
                             value={`R$ ${ credit -debt}`}
                             text='Valor Consolidado'
                             />
-
                         </Row>
                     </Content>
                 </div>
