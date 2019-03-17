@@ -1,4 +1,4 @@
-const INITIAL_STATE = { summary :{ credit:1000, debt:530 }}
+const INITIAL_STATE = { summary :{ credit:0, debt:0 }}
 
 export default function(state = INITIAL_STATE, action){
 
@@ -8,6 +8,5 @@ export default function(state = INITIAL_STATE, action){
 
         default:
             return state    
-    }
-   
+    } 
 }

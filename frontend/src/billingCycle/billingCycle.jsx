@@ -7,11 +7,12 @@ import TabsHeader from    '../common/tab/tabsHeader'
 import TabsContent from    '../common/tab/tabsContent'
 import TabHeader from    '../common/tab/tabHeader'
 import TabContent from    '../common/tab/tabContent'
+import List from   './billingCycleList'
 
 //conectando o redux para o gerenciamento de estado
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
+//Actions
 import { selectTab,showTabs } from '../common/tab/tabActions'
 
 
@@ -19,7 +20,6 @@ class BillingCycle extends Component{
     componentWillMount(){
         this.props.selectTab('tabList');
         this.props.showTabs('tabList','tabCreate')//limitando a visibilidade, para exibir somente as duas abas de listar e criar
-
     }
     render(){
         return(
@@ -35,17 +35,25 @@ class BillingCycle extends Component{
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
-                                    <h1>Listar</h1>
+                                    
+                                    <List>
+                                        
+                                    </List>
+
                             </TabContent>
+                            
                             <TabContent id='tabCreate'>
                                     <h1>Incluir</h1>
                             </TabContent>
+                            
                             <TabContent id='tabUpdate'>
                                     <h1>Atualizar</h1>
                             </TabContent>
+                            
                             <TabContent id='tabDelete'>
                                     <h1>Deletar</h1>
                             </TabContent>
+
                         </TabsContent>
                     </Tabs>
                 </Content>
@@ -59,6 +67,3 @@ const mapDispatchToProps = dispatch =>bindActionCreators({selectTab,showTabs},di
 
 //decorator (Conectado o componente TabHeader com o estado do Redux)
 export default connect(mapStateToProps,mapDispatchToProps)(BillingCycle)
-
-
-
