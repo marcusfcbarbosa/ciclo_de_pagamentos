@@ -9,6 +9,8 @@ import TabHeader from    '../common/tab/tabHeader'
 
 class BillingCycle extends Component{
     render(){
+        
+
         return(
             <div>
                 <ContentHeader tittle='Ciclo de Pagamentos' subtittle="Cadastro"/>

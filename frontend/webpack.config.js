@@ -43,6 +43,7 @@ module.exports ={
         },{
             test: /\.woff|.woff2|.ttf|.eot|.svg|.png|.jpg*.*$/,//arquivos de fonte e imagem
             loader: 'file'
+        
         }
      ]
     }
