@@ -8,8 +8,17 @@ import TabsContent from    '../common/tab/tabsContent'
 import TabHeader from    '../common/tab/tabHeader'
 import TabContent from    '../common/tab/tabContent'
 
+//conectando o redux para o gerenciamento de estado
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import { selectTab } from '../common/tab/tabActions'
+
 
 class BillingCycle extends Component{
+    componentWillMount(){
+        this.props.selectTab('tabList');
+    }
     render(){
         return(
             <div>
@@ -22,7 +31,7 @@ class BillingCycle extends Component{
                             <TabHeader label='Alterar' icon='pencil' target='tabUpdate'/>
                             <TabHeader label='Excluir' icon='trash-o' target='tabDelete'/>
                         </TabsHeader>
-                        
+
                         <TabsContent>
                             <TabContent id='tabList'>
                                     <h1>Listar</h1>
@@ -44,4 +53,11 @@ class BillingCycle extends Component{
     }   
 }
 
-export default BillingCycle
+const mapStateToProps = state =>({ tab: state.tab })
+const mapDispatchToProps = dispatch =>bindActionCreators({selectTab},dispatch) 
+
+//decorator (Conectado o componente TabHeader com o estado do Redux)
+export default connect(mapStateToProps,mapDispatchToProps)(BillingCycle)
+
+
+
