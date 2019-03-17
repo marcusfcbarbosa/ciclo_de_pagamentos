@@ -5,3 +5,14 @@ export function selectTab(tabId){
         payload: tabId
     }    
 }
+
+
+export function showTabs(...TabIds){
+    const tasbToShow ={}
+    TabIds.forEach(e=>tasbToShow[e]= true)
+    return{
+        type:'TAB_SHOWED',
+        payload:tasbToShow
+    }
+
+}
