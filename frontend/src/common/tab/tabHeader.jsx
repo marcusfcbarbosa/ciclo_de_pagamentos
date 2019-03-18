@@ -25,6 +25,7 @@ class TabHeader extends Component{
         }
 }
 
+
 //tab eu peguei do reducer.js
 const mapStateToProps = state =>({ tab: state.tab })
 const mapDispatchToPros = dispatch =>bindActionCreators({selectTab},dispatch)
