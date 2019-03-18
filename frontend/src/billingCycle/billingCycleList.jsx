@@ -1,16 +1,24 @@
 import React ,{Component} from 'react'
-
 //conectando o redux para o gerenciamento de estado
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
 import { getList } from './billingCycleActions'
 
 class BillingCycleList extends Component{
-        componentWillMount(){
+    componentWillMount(){
             this.props.getList()
     }
-
+    renderRows(){
+        const list = this.props.list || []
+        //bc = billlingCyle
+        return list.map(bc =>(
+            <tr id={bc._id} >
+                <td> {bc.name}</td>
+                <td> {bc.month}</td>
+                <td> {bc.year}</td>
+            </tr>
+        ))
+    }
     render(){
         //por estar trabalhando com requisições assincronas, eu só irei conseguir visualizar o resultado do request feito na action, dentro do render, pois dessa forma ele
         //somente irá renderizar quando tiver uma resposta da promisse
@@ -26,14 +34,13 @@ class BillingCycleList extends Component{
                             </tr>
                         </thead>
                         <tbody>
-
+                            {this.renderRows()}
                         </tbody>
                     </table>
             </div>
         )
     }
 }
-
 //aplicando o redux
 const mapStateToProps = state =>({
     list:state.billingCycle.list
