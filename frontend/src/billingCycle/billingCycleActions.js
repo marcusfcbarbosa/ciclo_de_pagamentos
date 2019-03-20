@@ -1,11 +1,18 @@
 import axios from 'axios'//para as chamadas http
 const BASE_URL = 'http://localhost:3003/api'
 
-
 export function getList(){
     const request = axios.get(`${BASE_URL}/billingCycles`)
     return{
         type:'BILLING_CYCLES_FETCHED',
         payload:request
-    }   
+    }
+}
+
+export function create(values){
+    const request = axios.post(`${BASE_URL}/billingCycles`,values)
+    return{
+        type:'TEMP',
+        payload:request
+    }
 }
