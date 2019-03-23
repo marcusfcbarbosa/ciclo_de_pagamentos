@@ -30,8 +30,7 @@ class BillingCycleList extends Component{
     render(){
         //por estar trabalhando com requisições assincronas, eu só irei conseguir visualizar o resultado do request feito na action, dentro do render, pois dessa forma ele
         //somente irá renderizar quando tiver uma resposta da promisse
-        console.log(this.props.list)
-        return(
+       return(
             <div>
                     <table className='table'>
                         <thead>
