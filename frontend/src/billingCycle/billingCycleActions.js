@@ -41,7 +41,13 @@ function submit(values, method){
         })
     }
 }
-
+export function showDelete(billingCyle){
+    return [
+        showTabs('tabDelete'),
+        selectTab('tabDelete'),
+        initialize('billingCycleForm',billingCyle)//para poder carregar o form, ja preenchido
+    ]
+}
 
 //como eu tenho o redux multi, ele permite que eu retorne um array de actions
 export function showUpdate(billingCyle){

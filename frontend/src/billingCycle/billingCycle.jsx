@@ -14,7 +14,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 //Actions
 import { selectTab,showTabs } from '../common/tab/tabActions'
-import { create,update } from './billingCycleActions'
+import { create,update,deletar } from './billingCycleActions'
 
 
 class BillingCycle extends Component{
@@ -46,7 +46,7 @@ class BillingCycle extends Component{
                                 <Form onSubmit={this.props.update } />
                             </TabContent>
                             <TabContent id='tabDelete'>
-                            <Form onSubmit={this.props.delete } />
+                            <Form onSubmit={this.props.deletar } />
                             </TabContent>
                         </TabsContent>
                     </Tabs>
@@ -58,7 +58,7 @@ class BillingCycle extends Component{
 
 //const mapStateToProps = state =>({ tab: state.tab })
 const mapDispatchToProps = dispatch =>bindActionCreators({
-        selectTab,showTabs,create,update
+        selectTab,showTabs,create,update,deletar
     },dispatch) 
 
 //decorator (Conectado o componente TabHeader com o estado do Redux)
