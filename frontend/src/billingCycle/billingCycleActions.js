@@ -30,10 +30,4 @@ export function create(values){
                 e.response.data.errors.forEach(error=>toastr.error('Erro',error))
             })
         }
-
-    
-    return{
-        type:'TEMP',
-        payload:request
-    }
 }
