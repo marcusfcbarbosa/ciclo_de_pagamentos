@@ -4,6 +4,7 @@ import { reset as resetForm , initialize } from 'redux-form'
 import { showTabs,selectTab  } from '../common/tab/tabActions'
 
 const BASE_URL = 'http://localhost:3003/api'
+const INITIAL_VALUES = {}
 
 export function getList(){
     const request = axios.get(`${BASE_URL}/billingCycles`)
@@ -12,9 +13,6 @@ export function getList(){
         payload:request
     }
 }
-
-
-
 //e.response.data (os dados que vieram da resposta)
 export function create(values){
         return dispach=>{
@@ -22,10 +20,7 @@ export function create(values){
             .then(resp=>{
                 toastr.success('Sucesso','Operação Realizada com sucesso.')
                 dispach([
-                    resetForm('billingCycleForm'),
-                    getList(),
-                    selectTab('tabList'),
-                    showTabs('tabList','tabCreate')
+                    init()
                 ])
             })
             .catch(e =>{
@@ -39,6 +34,16 @@ export function showUpdate(billingCyle){
     return [
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        initialize('billingCycleForm',billingCyle )//para poder carregar o form, ja preenchido
+        initialize('billingCycleForm',billingCyle)//para poder carregar o form, ja preenchido
+    ]
+}
+
+//função para inicializar o meu cadastro, com os dados vazios
+export function init(){
+    return [
+        showTabs('tabList','tabCreate'),
+        selectTab('tabList'),
+        getList(),
+        initialize('billingCycleForm',INITIAL_VALUES)
     ]
 }
