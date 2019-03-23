@@ -25,5 +25,6 @@ class BillingCycleForm extends  Component{
         )
     }
 }
-
-export default reduxForm({form:'billingCycleForm'})(BillingCycleForm)
+//destroyOnUnmount: false essa flag para que o estado do formulario esteja sempre disponivel no mesmo(vem do redux-form)
+//usado para quando se clcika em uma ação do formulario os dados ja vem carregados ex:(Tela de edição)
+export default reduxForm({form:'billingCycleForm', destroyOnUnmount: false })(BillingCycleForm)

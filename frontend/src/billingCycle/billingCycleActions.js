@@ -1,6 +1,6 @@
 import axios from 'axios'//para as chamadas http
 import { toastr } from 'react-redux-toastr'//adicionando as mensagens de sucesso ou de erro
-import { reset as resetForm } from 'redux-form'
+import { reset as resetForm , initialize } from 'redux-form'
 import { showTabs,selectTab  } from '../common/tab/tabActions'
 
 const BASE_URL = 'http://localhost:3003/api'
@@ -17,7 +17,6 @@ export function getList(){
 
 //e.response.data (os dados que vieram da resposta)
 export function create(values){
-
         return dispach=>{
             axios.post(`${BASE_URL}/billingCycles`,values)
             .then(resp=>{
@@ -34,10 +33,12 @@ export function create(values){
             })
         }
 }
+
 //como eu tenho o redux multi, ele permite que eu retorne um array de actions
 export function showUpdate(billingCyle){
     return [
         showTabs('tabUpdate'),
-        selectTab('tabUpdate')
+        selectTab('tabUpdate'),
+        initialize('billingCycleForm',billingCyle )//para poder carregar o form, ja preenchido
     ]
 }
