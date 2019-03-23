@@ -16,7 +16,6 @@ class BillingCycleForm extends  Component{
     render(){
         //handleSubmit é decorado pelo redux-form, para eventos de onSubmit
         const { handleSubmit } = this.props
-        
         return(
             <form role='form' onSubmit={handleSubmit}>
                 <div className='box-body'>

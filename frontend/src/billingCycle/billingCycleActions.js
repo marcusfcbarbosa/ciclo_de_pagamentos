@@ -15,19 +15,30 @@ export function getList(){
 }
 //e.response.data (os dados que vieram da resposta)
 export function create(values){
-        return dispach=>{
-            axios.post(`${BASE_URL}/billingCycles`,values)
-            .then(resp=>{
-                toastr.success('Sucesso','Operação Realizada com sucesso.')
-                dispach([
-                    init()
-                ])
-            })
-            .catch(e =>{
-                e.response.data.errors.forEach(error=>toastr.error('Erro',error))
-            })
-        }
+     return submit(values,'post')
 }
+
+export function update(values){
+    return submit(values,'put')
+}
+
+function submit(values, method){
+    return dispach=>{
+        const id = values._id ? values._id :''
+        axios[method](`${BASE_URL}/billingCycles/${id}`,values)
+
+        .then(resp=>{
+            toastr.success('Sucesso','Operação Realizada com sucesso.')
+            dispach([
+                init()
+            ])
+        })
+        .catch(e =>{
+            e.response.data.errors.forEach(error=>toastr.error('Erro',error))
+        })
+    }
+}
+
 
 //como eu tenho o redux multi, ele permite que eu retorne um array de actions
 export function showUpdate(billingCyle){
