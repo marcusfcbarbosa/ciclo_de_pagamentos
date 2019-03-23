@@ -22,11 +22,14 @@ export function update(values){
     return submit(values,'put')
 }
 
+export function deletar(values){
+    return submit(values,'delete')
+}
+
 function submit(values, method){
     return dispach=>{
         const id = values._id ? values._id :''
         axios[method](`${BASE_URL}/billingCycles/${id}`,values)
-
         .then(resp=>{
             toastr.success('Sucesso','Operação Realizada com sucesso.')
             dispach([
