@@ -12,6 +12,9 @@ export function getList(){
         payload:request
     }
 }
+
+
+
 //e.response.data (os dados que vieram da resposta)
 export function create(values){
 
@@ -30,4 +33,11 @@ export function create(values){
                 e.response.data.errors.forEach(error=>toastr.error('Erro',error))
             })
         }
+}
+//como eu tenho o redux multi, ele permite que eu retorne um array de actions
+export function showUpdate(billingCyle){
+    return [
+        showTabs('tabUpdate'),
+        selectTab('tabUpdate')
+    ]
 }

@@ -2,7 +2,7 @@ import React ,{Component} from 'react'
 //conectando o redux para o gerenciamento de estado
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getList } from './billingCycleActions'
+import { getList,showUpdate } from './billingCycleActions'
 
 class BillingCycleList extends Component{
     componentWillMount(){
@@ -16,6 +16,11 @@ class BillingCycleList extends Component{
                 <td> {bc.name}</td>
                 <td> {bc.month}</td>
                 <td> {bc.year}</td>
+                <td> 
+               <button  className='btn btn-warning' onClick={()=> this.props.showUpdate(bc) }>
+                    <i className='fa fa-pencil'></i>
+               </button>
+                </td>
             </tr>
         ))
     }
@@ -31,6 +36,7 @@ class BillingCycleList extends Component{
                                 <th>Nome</th>
                                 <th>Mês</th>
                                 <th>Ano</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,6 +51,7 @@ class BillingCycleList extends Component{
 const mapStateToProps = state =>({
     list:state.billingCycle.list
 })
-const mapDispatchToPros = dispatch =>bindActionCreators({getList}, dispatch)
+//é esse método que deixa disponivel dentro do props os métodos da Action
+const mapDispatchToPros = dispatch =>bindActionCreators({getList,showUpdate}, dispatch)
 //decorator
 export default connect(mapStateToProps,mapDispatchToPros)(BillingCycleList)
