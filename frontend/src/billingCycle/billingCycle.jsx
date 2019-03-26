@@ -59,7 +59,7 @@ class BillingCycle extends Component{
 //const mapStateToProps = state =>({ tab: state.tab })
 const mapDispatchToProps = dispatch =>bindActionCreators({
         selectTab,showTabs,create,update,deletar
-    },dispatch) 
+    },dispatch)
 
 //decorator (Conectado o componente TabHeader com o estado do Redux)
 export default connect(null,mapDispatchToProps)(BillingCycle)
