@@ -13,14 +13,16 @@ import Form from    './billingCycleForm'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 //Actions
-import { selectTab,showTabs } from '../common/tab/tabActions'
-import { create,update,deletar } from './billingCycleActions'
+//import { selectTab,showTabs } from '../common/tab/tabActions'
+import { init,create,update,deletar } from './billingCycleActions'
 
 
 class BillingCycle extends Component{
     componentWillMount(){
-        this.props.selectTab('tabList');
-        this.props.showTabs('tabList','tabCreate')//limitando a visibilidade, para exibir somente as duas abas de listar e criar
+        this.props.init();
+        //Comentei esses trechos pois ja aparece dentro de init()
+        //this.props.selectTab('tabList');
+        //this.props.showTabs('tabList','tabCreate')//limitando a visibilidade, para exibir somente as duas abas de listar e criar
     }
     render(){
         return(
@@ -58,7 +60,7 @@ class BillingCycle extends Component{
 
 //const mapStateToProps = state =>({ tab: state.tab })
 const mapDispatchToProps = dispatch =>bindActionCreators({
-        selectTab,showTabs,create,update,deletar
+    init,create,update,deletar
     },dispatch)
 
 //decorator (Conectado o componente TabHeader com o estado do Redux)
