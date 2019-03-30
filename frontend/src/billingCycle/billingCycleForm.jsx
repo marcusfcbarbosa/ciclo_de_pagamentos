@@ -10,12 +10,12 @@ import { reduxForm, Field, formValueSelector } from 'redux-form'
 import labelAndInput from   '../common/form/labelAndInput'
 //importando a Action
 import { init } from './billingCycleActions'
-
 import ItemList from './itemList'
+
+import Summary from   './summary'
 
 
 class BillingCycleForm extends  Component{
-    
     render(){
         //handleSubmit é decorado pelo redux-form, para eventos de onSubmit
         const { handleSubmit,readOnly,credits ,debts} = this.props
@@ -25,10 +25,11 @@ class BillingCycleForm extends  Component{
                     <Field name='name' component={labelAndInput}  label='Nome' cols='12 4' placeholder='Informe o nome' readOnly={readOnly}/>
                     <Field name='month' component={labelAndInput} label='Mês' cols='12 4' placeholder='Informe o mês' type='number' readOnly={readOnly} />
                     <Field name='year' component={labelAndInput} label='Ano' cols='12 4' placeholder='Informe o ano' type='number' readOnly={readOnly} />
+                    <Summary credit={1000} debt={100} />
                     <ItemList cols='12 6' readOnly={readOnly} list={credits} 
                     field='credits' legend='Créditos' showStatus={true}/>
                     <ItemList cols='12 6' readOnly={readOnly} list={debts} 
-                    field='debts' legend='Débitos' showStatus={true}/>
+                    field='debts' legend='Débitos' showStatus={true} />
                 </div>
                 <div className='box-footer'>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
