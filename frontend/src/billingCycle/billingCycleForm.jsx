@@ -27,9 +27,9 @@ class BillingCycleForm extends  Component{
                     <Field name='year' component={labelAndInput} label='Ano' cols='12 4' placeholder='Informe o ano' type='number' readOnly={readOnly} />
                     <Summary credit={1000} debt={100} />
                     <ItemList cols='12 6' readOnly={readOnly} list={credits} 
-                    field='credits' legend='Créditos' showStatus={true}/>
+                    field='credits' legend='Créditos' showStatus={false}/>
                     <ItemList cols='12 6' readOnly={readOnly} list={debts} 
-                    field='debts' legend='Débitos' showStatus={true} />
+                    field='debts' legend='Débitos' showStatus={false} />
                 </div>
                 <div className='box-footer'>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
