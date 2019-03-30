@@ -32,7 +32,7 @@ class ItemList extends Component {
                     <Field name={`${this.props.field}[${index}].name`} component={Input} placeholder='Informe o nome' readOnly={this.props.readOnly} />
                 </td>
                 <td>
-                    <Field name={`${this.props.field}[${index}].value`} component={Input} placeholder='Informe o valor' readOnly={this.props.readOnly} />
+                    <Field name={`${this.props.field}[${index}].value`} type='number' component={Input} placeholder='Informe o valor' readOnly={this.props.readOnly} />
                 </td>
                 <If test={this.props.showStatus}>
                 <Field name={`${this.props.field}[${index}].status`} component={Input} placeholder='Status' readOnly={this.props.readOnly} />
