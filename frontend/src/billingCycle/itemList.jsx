@@ -11,7 +11,7 @@ class ItemList extends Component {
         //se ele estiver no modo somente leitura, não faz nada
         //se nao ele adiciona uma linha nova
         if(!this.props.readOnly){
-            this.props.arrayInsert('billingCycleForm','credits',index, item)
+            this.props.arrayInsert('billingCycleForm',this.props.field,index, item)
         }
     }
     remove(index){
@@ -19,7 +19,7 @@ class ItemList extends Component {
         //se nao ele remove a linha
         //e verifica se tem pelo menos um item na linha
         if(!this.props.readOnly && this.props.list.length > 1 ){
-            this.props.arrayRemove('billingCycleForm','credits',index)
+            this.props.arrayRemove('billingCycleForm',this.props.field,index)
         }
     }
     renderRows() {
@@ -27,10 +27,10 @@ class ItemList extends Component {
         return list.map((item, index) => (
             <tr key={index}>
                 <td>
-                    <Field name={`credits[${index}].name`} component={Input} placeholder='Informe o nome' readOnly={this.props.readOnly} />
+                    <Field name={`${this.props.field}[${index}].name`} component={Input} placeholder='Informe o nome' readOnly={this.props.readOnly} />
                 </td>
                 <td>
-                    <Field name={`credits[${index}].value`} component={Input} placeholder='Informe o valor' readOnly={this.props.readOnly} />
+                    <Field name={`${this.props.field}[${index}].value`} component={Input} placeholder='Informe o valor' readOnly={this.props.readOnly} />
                 </td>
                 <td>
                     <button type='button' className='btn btn-success' onClick={() => this.add(index + 1)}>
@@ -50,7 +50,7 @@ class ItemList extends Component {
         return (
             <Grid cols={this.props.cols}>
                 <fieldset>
-                    <legend>Créditos</legend>
+                    <legend>{this.props.legend}</legend>
                     <table className='table'>
                         <thead>
                             <tr>
