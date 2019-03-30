@@ -16,7 +16,6 @@ import { connect } from 'react-redux'
 //import { selectTab,showTabs } from '../common/tab/tabActions'
 import { init,create,update,deletar } from './billingCycleActions'
 
-
 class BillingCycle extends Component{
     componentWillMount(){
         this.props.init();
