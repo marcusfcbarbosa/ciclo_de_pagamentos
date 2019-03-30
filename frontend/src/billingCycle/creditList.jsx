@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Grid from '../common/layout/grid'
-import { Field , arrayInsert} from 'redux-form'
+import { Field , arrayInsert, arrayRemove} from 'redux-form'
 import Input from '../common/form/input'
 //importando redux
 import { connect } from 'react-redux'
@@ -14,6 +14,14 @@ class CreditList extends Component {
         //se nao ele adiciona uma linha nova
         if(!this.props.readOnly){
             this.props.arrayInsert('billingCycleForm','credits',index, item)
+        }
+    }
+    remove(index){
+        //se ele estiver no modo somente leitura, não faz nada
+        //se nao ele remove a linha
+        //e verifica se tem pelo menos um item na linha
+        if(!this.props.readOnly && this.props.list.length > 1 ){
+            this.props.arrayRemove('billingCycleForm','credits',index)
         }
     }
     renderRows() {
@@ -33,8 +41,10 @@ class CreditList extends Component {
                     <button type='button' className='btn btn-warning' onClick={() => this.add(index + 1,item)}>
                         <i className='fa fa-clone'></i>
                     </button>
+                    <button type='button' className='btn btn-danger' onClick={() => this.remove(index)}>
+                        <i className='fa fa-trash'></i>
+                    </button>
                 </td>
-
             </tr>
         ))
     }
@@ -62,7 +72,7 @@ class CreditList extends Component {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    arrayInsert
+    arrayInsert,arrayRemove
 },dispatch)
 
 
