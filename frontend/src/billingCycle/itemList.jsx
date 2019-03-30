@@ -6,9 +6,7 @@ import Input from '../common/form/input'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-
-class CreditList extends Component {
-
+class ItemList extends Component {
     add(index, item ={}){
         //se ele estiver no modo somente leitura, não faz nada
         //se nao ele adiciona uma linha nova
@@ -75,5 +73,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     arrayInsert,arrayRemove
 },dispatch)
 
-
-export default connect(null, mapDispatchToProps)(CreditList)
+export default connect(null, mapDispatchToProps)(ItemList)
