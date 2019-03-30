@@ -18,7 +18,7 @@ class BillingCycleForm extends  Component{
     
     render(){
         //handleSubmit é decorado pelo redux-form, para eventos de onSubmit
-        const { handleSubmit,readOnly,credits } = this.props
+        const { handleSubmit,readOnly,credits ,debts} = this.props
         return(
             <form role='form' onSubmit={handleSubmit}>
                 <div className='box-body'>
@@ -27,7 +27,7 @@ class BillingCycleForm extends  Component{
                     <Field name='year' component={labelAndInput} label='Ano' cols='12 4' placeholder='Informe o ano' type='number' readOnly={readOnly} />
                     <ItemList cols='12 6' readOnly={readOnly} list={credits} 
                     field='credits' legend='Créditos'/>
-                    <ItemList cols='12 6' readOnly={readOnly} list={credits} 
+                    <ItemList cols='12 6' readOnly={readOnly} list={debts} 
                     field='debts' legend='Débitos'/>
                 </div>
                 <div className='box-footer'>
